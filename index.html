@@ -107,7 +107,7 @@
     </div>
 
     <script>
-    	const rC = document.getElementById("roundCount");
+    	const roundCount = document.getElementById("roundCount");
         const log = document.getElementById("log");
         function clicked() {
             const input = document.getElementById("input");
@@ -115,8 +115,8 @@
             w3_stocks.innerHTML = `<b>${input.value}</b>`;
         }
         function nextRound(){
-            rC.innerHTML = Number(rC.fitstChild.nodeValue) + 1;
-            log.innerHTML = `${rC.fitstChild.nodeValue}`;
+            roundCount.innerHTML = parseInt(roundCount.fitstChild.nodeValue) + 1;
+            log.innerHTML = `${roundCount.fitstChild.nodeValue}`;
         }
     </script>
 </body>
