@@ -115,7 +115,7 @@
 		function nextRound(){
             const roundCount = document.getElementById("roundCount");
 			const log = document.getElementById("log");
-			roundCount.innerHTML = parseInt(roundCount.fitstChild.nodeValue) + 1;
+			roundCount.innerHTML = Number(roundCount.Value) + 1;
 			log.innerHTML = `${roundCount.value}`;
         }
     </script>
