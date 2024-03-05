@@ -107,14 +107,14 @@
     </div>
 
     <script>
+    	const roundCount = document.getElementById("roundCount");
+		const log = document.getElementById("log");
     	function clicked() {
     		const input = document.getElementById("input");
     		const output = document.getElementById("output");
     		w3_stocks.innerHTML = `<b>${input.value}</b>`;
 		}
 		function nextRound() {
-			const roundCount = document.getElementById("roundCount");
-			const log = document.getElementById("log");
 			roundCount.textContent = Number(roundCount.textContent) + 1;
 		}
     </script>
