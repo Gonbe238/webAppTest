@@ -24,6 +24,21 @@
             margin: 10px;
             padding: 10px;
         }
+        
+        .stock button {
+			background-color: #4CAF50; /* 背景色 */
+			color: white; /* 文字色 */
+			padding: 15px 32px; /* パディング */
+    		text-align: center; /* 文字のアライメント */
+			text-decoration: none; /* 文字装飾 */
+    		display: inline-block; /* ボタンの表示方法 */
+    		font-size: 16px; /* フォントサイズ */
+    		font-family: Arial, sans-serif; /* フォント */
+    		margin: 4px 2px; /* 外側の余白 */
+    		cursor: pointer; /* カーソル */
+    		border: none; /* ボーダーなし */
+    		border-radius: 50px; /* 50pxの角丸 */
+        }
     </style>
 </head>
 
@@ -42,7 +57,7 @@
                     <td rowspan="3">木</td>
                     <td>森林</td>
                     <td>
-                        <button id="3WoodStock" onclick="resetStock(this.id);">0</button>
+                        <button class="stock" id="3WoodStock" onclick="resetStock(this.id);">0</button>
                     </td>
                 </tr>
                 <tr>
