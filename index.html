@@ -18,39 +18,97 @@
     <div id="output"></div>
 
     <style>
-        .example {
+        .flex {
             display: flex;
+            padding: 10px;
             align-items: flex-start;
         }
+
+        .flex div {
+            margin: 10px;
+            padding: 10px;
+        }
     </style>
-    <div class="example">
-        <table border>
-            <tr>
-                <td>セル</td>
-                <td>セル</td>
-            </tr>
-            <tr>
-                <td>セル</td>
-                <td>セル</td>
-            </tr>
-        </table>
-        <table border>
-            <tr>
-                <td>セル</td>
-                <td>セル<br>セル</td>
-            </tr>
-            <tr>
-                <td>セル<br>セル</td>
-                <td>セル</td>
-            </tr>
-        </table>
+
+    <div class="flex">
+        <div>
+            <table border>
+                <!--木エリア-->
+                <tr>
+                    <td rowspan="3">木</td>
+                    <td>森林</td>
+                    <td id="w3_stocks">0</td>
+                </tr>
+                <tr>
+                    <td>小さな森</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>林</td>
+                    <td>0</td>
+                </tr>
+                <!--レンガエリア-->
+                <tr>
+                    <td rowspan="2">レンガ</td>
+                    <td>窪地</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>粘土抗</td>
+                    <td>0</td>
+                </tr>
+                <!--石エリア-->
+                <tr>
+                    <td rowspan="2">石</td>
+                    <td>西石</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>東石</td>
+                    <td>0</td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <table border>
+                <!--葦エリア-->
+                <tr>
+                    <td colspan="2">葦原</td>
+                    <td>0</td>
+                </tr>
+                <!--家畜エリア-->
+                <tr>
+                    <td rowspan="3">家畜</td>
+                    <td>羊</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>猪</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>牛</td>
+                    <td>0</td>
+                </tr>
+                <!--飯エリア-->
+                <tr>
+                    <td rowspan="2">飯</td>
+                    <td>漁</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>小劇場</td>
+                    <td>0</td>
+                </tr>
+            </table>
+        </div>
     </div>
 
     <script>
         function clicked() {
             const input = document.getElementById("input");
             const output = document.getElementById("output");
-            output.innerHTML = `<b>${input.value}</b>`;
+            w3_stocks.innerHTML = `<b>${input.value}</b>`;
         }
     </script>
 </body>
