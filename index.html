@@ -17,46 +17,34 @@
     <button onclick="clicked();">ボタン</button>
     <div id="output"></div>
 
-    <table>
-        <caption>
-            Front-end web developer course 2021
-        </caption>
-        <thead>
+    <style>
+        .example {
+            display: flex;
+            align-items: flex-start;
+        }
+    </style>
+    <div class="example">
+        <table border>
             <tr>
-                <th scope="col">Person</th>
-                <th scope="col">Most interest in</th>
-                <th scope="col">Age</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">Chris</th>
-                <td>HTML tables</td>
-                <td>22</td>
+                <td>セル</td>
+                <td>セル</td>
             </tr>
             <tr>
-                <th scope="row">Dennis</th>
-                <td>Web accessibility</td>
-                <td>45</td>
+                <td>セル</td>
+                <td>セル</td>
+            </tr>
+        </table>
+        <table border>
+            <tr>
+                <td>セル</td>
+                <td>セル<br>セル</td>
             </tr>
             <tr>
-                <th scope="row">Sarah</th>
-                <td>JavaScript frameworks</td>
-                <td>29</td>
+                <td>セル<br>セル</td>
+                <td>セル</td>
             </tr>
-            <tr>
-                <th scope="row">Karen</th>
-                <td>Web performance</td>
-                <td>36</td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <th scope="row" colspan="2">Average age</th>
-                <td>33</td>
-            </tr>
-        </tfoot>
-    </table>
+        </table>
+    </div>
 
     <script>
         function clicked() {
