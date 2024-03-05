@@ -13,8 +13,10 @@
 </head>
 
 <body>
-    <div id="Round"></div>
-    <button onclick="clicked();">Next Round</button>
+    <div id="Round">
+        <p>Round <var id="roundCount">1</var></p>
+    </div>
+    <button onclick="nextRound();">Next Round</button>
 
     <style>
         .flex {
@@ -108,6 +110,11 @@
             const input = document.getElementById("input");
             const output = document.getElementById("output");
             w3_stocks.innerHTML = `<b>${input.value}</b>`;
+        }
+        function nextRound(){
+            let roundCount = document.getelementbyid("roundCount");
+            roundCount = roundCount + 1;
+            roundCount.innerHTML = roundCount.value;
         }
     </script>
 </body>
