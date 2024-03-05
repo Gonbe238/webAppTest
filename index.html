@@ -13,11 +13,17 @@
 </head>
 
 <body>
-    <!-- 実際に表示される領域 -->
-    <h1>Hello Html</h1>
+    button
+    <input id="input">
+    <button onclick="clicked();">ボタン</button>
+    <div id="output"></div>
+
     <script>
-        // JavaScriptを書くところ
-        console.log("Hello JavaScript");
+        function clicked() {
+            const input = document.getElementById("input");
+            const output = document.getElementById("output");
+            output.innerHTML = `<b>${input.value}</b>`;
+        }
     </script>
 </body>
 
