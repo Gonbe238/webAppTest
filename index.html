@@ -12,7 +12,7 @@
         body {
             font-family: "Noto Sans JP"
         }
-        
+
         .flex {
             display: flex;
             padding: 10px;
@@ -21,25 +21,138 @@
         }
 
         .flex div {
-            margin: 10px;
+            width: 40%;
+            margin: 0px;
             padding: 10px;
         }
-        
+
         button.stock {
-			background-color: #4CAF50; /* 背景色 */
-			color: white; /* 文字色 */
-			padding: 15px 32px; /* パディング */
-    		text-align: center; /* 文字のアライメント */
-			text-decoration: none; /* 文字装飾 */
-    		display: inline-block; /* ボタンの表示方法 */
-    		font-size: 16px; /* フォントサイズ */
-    		font-family: Arial, sans-serif; /* フォント */
-    		margin: 4px 2px; /* 外側の余白 */
-    		cursor: pointer; /* カーソル */
-    		border: none; /* ボーダーなし */
-    		border-radius: 50px; /* 50pxの角丸 */
+            /* background-color: forestgreen; */
+            /* 背景色 */
+            color: white;
+            /* 文字色 */
+            padding: 0px 40px;
+            /* パディング */
+            text-align: center;
+            /* 文字のアライメント */
+            text-decoration: none;
+            /* 文字装飾 */
+            display: block;
+            /* ボタンの表示方法 */
+            font-size: 1.5em;
+            /* フォントサイズ */
+            font-family: Arial, sans-serif;
+            /* フォント */
+            margin: auto;
+            /* 外側の余白 */
+            cursor: pointer;
+            /* カーソル */
+            border: none;
+            /* ボーダーなし */
+            border-radius: 20px;
+            /* 20pxの角丸 */
         }
-        
+
+        table.setWidth {
+            margin: auto;
+        }
+
+        /* 木エリア用書式 */
+        td.woodBold {
+            color: white;
+            background-color: forestgreen;
+            text-align: center;
+        }
+
+        tr.wood {
+            color: black;
+            background-color: darkseagreen;
+        }
+
+        tr.wood button {
+            background-color: forestgreen;
+        }
+
+        /* レンガエリア用書式 */
+        td.clayBold {
+            color: white;
+            background-color: brown;
+            text-align: center;
+        }
+
+        tr.clay {
+            color: black;
+            background-color: burlywood;
+        }
+
+        tr.clay button {
+            background-color: brown;
+        }
+
+        /* 石エリア用書式 */
+        td.stoneBold {
+            color: white;
+            background-color: black;
+            text-align: center;
+        }
+
+        tr.stone {
+            color: black;
+            background-color: lightgray;
+        }
+
+        tr.stone button {
+            background-color: black;
+        }
+
+        /* 葦エリア用書式 */
+        td.reedBold {
+            color: black;
+            background-color: whitesmoke;
+            text-align: center;
+        }
+
+        tr.reed {
+            color: black;
+            background-color: white;
+        }
+
+        tr.reed button {
+            color: black;
+            background-color: whitesmoke;
+        }
+
+        /* 家畜エリア用書式 */
+        td.petBold {
+            color: white;
+            background-color: dodgerblue;
+            text-align: center;
+        }
+
+        tr.pet {
+            color: black;
+            background-color: lightblue;
+        }
+
+        tr.pet button {
+            background-color: dodgerblue;
+        }
+
+        /* 飯エリア用書式 */
+        td.foodBold {
+            color: white;
+            background-color: goldenrod;
+            text-align: center;
+        }
+
+        tr.food {
+            color: black;
+            background-color: palegoldenrod;
+        }
+
+        tr.food button {
+            background-color: goldenrod;
+        }
     </style>
 </head>
 
@@ -52,91 +165,125 @@
 
     <div class="flex">
         <div>
-            <table border>
+            <table class="setWidth" border>
                 <!--木エリア-->
-                <tr>
-                    <td rowspan="3">木</td>
-                    <td>森林</td>
-                    <td>
+                <tr class="wood">
+                    <td class="woodBold" rowspan="3" width="30%">木材</td>
+                    <td width="30%">森林</td>
+                    <td width="30%">
                         <button class="stock" id="3WoodStock" onclick="resetStock(this.id);">0</button>
                     </td>
                 </tr>
-                <tr>
+                <tr class="wood">
                     <td>小さな森</td>
-                    <td id="2WoodStock">0</td>
+                    <td>
+                        <button class="stock" id="2WoodStock" onclick="resetStock(this.id);">0</button>
+                    </td>
                 </tr>
-                <tr>
-                    <td>林</td>
-                    <td id="1WoodStock">0</td>
+                <tr class="wood">
+                    <td>雑木林</td>
+                    <td>
+                        <button class="stock" id="1WoodStock" onclick="resetStock(this.id);">0</button>
+                    </td>
                 </tr>
                 <!--レンガエリア-->
-                <tr>
-                    <td rowspan="2">レンガ</td>
+                <tr class="clay">
+                    <td class="clayBold" rowspan="2">レンガ</td>
                     <td>窪地</td>
-                    <td id="2ClayStock">0</td>
+                    <td>
+                        <button class="stock" id="2ClayStock" onclick="resetStock(this.id);">0</button>
+                    </td>
                 </tr>
-                <tr>
+                </tr>
+                <tr class="clay">
                     <td>粘土抗</td>
-                    <td id="1ClayStock">0</td>
+                    <td>
+                        <button class="stock" id="1ClayStock" onclick="resetStock(this.id);">0</button>
+                    </td>
+                </tr>
                 </tr>
                 <!--石エリア-->
-                <tr>
-                    <td rowspan="2">石</td>
-                    <td>西石</td>
-                    <td id="westStoneStock">0</td>
+                <tr class="stone">
+                    <td class="stoneBold" rowspan="2">石材</td>
+                    <td>西石 S2</tjd>
+                    <td>
+                        <button class="stock" id="westStoneStock" onclick="resetStock(this.id);">0</button>
+                    </td>
                 </tr>
-                <tr>
-                    <td>東石</td>
-                    <td id="eastStoneStock">0</td>
+                </tr>
+                <tr class="stone">
+                    <td>東石 S4</td>
+                    <td>
+                        <button class="stock" id="eastStoneStock" onclick="resetStock(this.id);">0</button>
+                    </td>
+                </tr>
                 </tr>
             </table>
         </div>
         <div>
-            <table border>
+            <table border width="100%">
                 <!--葦エリア-->
-                <tr>
-                    <td colspan="2">葦原</td>
-                    <td id="reedStock">0</td>
+                <tr class="reed">
+                    <td class="reedBold" width="60%" colspan="2">葦原</td>
+                    <td width="30%">
+                        <button class="stock" id="reedStock" onclick="resetStock(this.id);">0</button>
+                    </td>
+                </tr>
                 </tr>
                 <!--家畜エリア-->
-                <tr>
-                    <td rowspan="3">家畜</td>
-                    <td>羊</td>
-                    <td id="sheepStock">0</td>
+                <tr class="pet">
+                    <td class="petBold" width="30%" rowspan="3">家畜</td>
+                    <td width="30%">羊市場 S1</td>
+                    <td width="30%">
+                        <button class="stock" id="sheepStock" onclick="resetStock(this.id);">0</button>
+                    </td>
                 </tr>
-                <tr>
-                    <td>猪</td>
-                    <td id="boarStock">0</td>
                 </tr>
-                <tr>
-                    <td>牛</td>
-                    <td id="cowStock">0</td>
+                <tr class="pet">
+                    <td>猪市場 S3</td>
+                    <td>
+                        <button class="stock" id="boarStock" onclick="resetStock(this.id);">0</button>
+                    </td>
+                </tr>
+                </tr>
+                <tr class="pet">
+                    <td>牛市場 S4</td>
+                    <td>
+                        <button class="stock" id="cowStock" onclick="resetStock(this.id);">0</button>
+                    </td>
+                </tr>
                 </tr>
                 <!--飯エリア-->
-                <tr>
-                    <td rowspan="2">飯</td>
+                <tr class="food">
+                    <td class="foodBold" rowspan="2">飯</td>
                     <td>漁</td>
-                    <td id="aFoodStock">0</td>
+                    <td>
+                        <button class="stock" id="foodStock1" onclick="resetStock(this.id);">0</button>
+                    </td>
                 </tr>
-                <tr>
+                </tr>
+                <tr class="food">
                     <td>小劇場</td>
-                    <td id="bFoodStock">0</td>
+                    <td>
+                        <button class="stock" id="foodStock2" onclick="resetStock(this.id);">0</button>
+                    </td>
+                </tr>
                 </tr>
             </table>
         </div>
     </div>
 
     <script>
-    	const roundCount = document.getElementById("roundCount");
-		const log = document.getElementById("log");
-    	function clicked() {
-    		const input = document.getElementById("input");
-    		const output = document.getElementById("output");
-    		w3_stocks.innerHTML = `<b>${input.value}</b>`;
-		}
-		function nextRound() {
-			roundCount.textContent = Number(roundCount.textContent) + 1;
-		}
+        const roundCount = document.getElementById("roundCount");
+        const log = document.getElementById("log");
+        function clicked() {
+            const input = document.getElementById("input");
+            const output = document.getElementById("output");
+            w3_stocks.innerHTML = `<b>${input.value}</b>`;
+        }
+        function nextRound() {
+            roundCount.textContent = Number(roundCount.textContent) + 1;
+        }
     </script>
 </body>
 
