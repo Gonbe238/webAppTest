@@ -21,7 +21,7 @@
         }
 
         .flex div {
-            width: 40%;
+            width: 45%;
             margin: 0px;
             padding: 10px;
         }
@@ -158,9 +158,12 @@
 
 <body>
     <div id="Round">
-        <h1>Round <span id="roundCount">1</span></h1>
+        <h1>
+            Round
+            <span id="roundCount">1</span>
+            <button onclick="nextRound();">Next Round</button>
+        </h1>
     </div>
-    <button onclick="nextRound();">Next Round</button>
     <div id="log"></div>
 
     <div class="flex">
@@ -171,19 +174,19 @@
                     <td class="woodBold" rowspan="3" width="30%">木材</td>
                     <td width="30%">森林</td>
                     <td width="30%">
-                        <button class="stock" id="3WoodStock" onclick="resetStock(this.id);">0</button>
+                        <button class="stock" id="wood3Stock" onclick="resetStock(this.id);">3</button>
                     </td>
                 </tr>
                 <tr class="wood">
                     <td>小さな森</td>
                     <td>
-                        <button class="stock" id="2WoodStock" onclick="resetStock(this.id);">0</button>
+                        <button class="stock" id="wood2Stock" onclick="resetStock(this.id);">2</button>
                     </td>
                 </tr>
                 <tr class="wood">
                     <td>雑木林</td>
                     <td>
-                        <button class="stock" id="1WoodStock" onclick="resetStock(this.id);">0</button>
+                        <button class="stock" id="wood1Stock" onclick="resetStock(this.id);">1</button>
                     </td>
                 </tr>
                 <!--レンガエリア-->
@@ -191,14 +194,14 @@
                     <td class="clayBold" rowspan="2">レンガ</td>
                     <td>窪地</td>
                     <td>
-                        <button class="stock" id="2ClayStock" onclick="resetStock(this.id);">0</button>
+                        <button class="stock" id="clay2Stock" onclick="resetStock(this.id);">2</button>
                     </td>
                 </tr>
                 </tr>
                 <tr class="clay">
                     <td>粘土抗</td>
                     <td>
-                        <button class="stock" id="1ClayStock" onclick="resetStock(this.id);">0</button>
+                        <button class="stock" id="clay1Stock" onclick="resetStock(this.id);">1</button>
                     </td>
                 </tr>
                 </tr>
@@ -207,26 +210,26 @@
                     <td class="stoneBold" rowspan="2">石材</td>
                     <td>西石 S2</tjd>
                     <td>
-                        <button class="stock" id="westStoneStock" onclick="resetStock(this.id);">0</button>
+                        <button class="stock" id="westStoneStock" onclick="resetStock(this.id);">-</button>
                     </td>
                 </tr>
                 </tr>
                 <tr class="stone">
                     <td>東石 S4</td>
                     <td>
-                        <button class="stock" id="eastStoneStock" onclick="resetStock(this.id);">0</button>
+                        <button class="stock" id="eastStoneStock" onclick="resetStock(this.id);">-</button>
                     </td>
                 </tr>
                 </tr>
             </table>
         </div>
         <div>
-            <table border width="100%">
+            <table border class="setWidth">
                 <!--葦エリア-->
                 <tr class="reed">
-                    <td class="reedBold" width="60%" colspan="2">葦原</td>
+                    <td class="reedBold" width="30%" colspan="2">葦原</td>
                     <td width="30%">
-                        <button class="stock" id="reedStock" onclick="resetStock(this.id);">0</button>
+                        <button class="stock" id="reedStock" onclick="resetStock(this.id);">1</button>
                     </td>
                 </tr>
                 </tr>
@@ -235,21 +238,21 @@
                     <td class="petBold" width="30%" rowspan="3">家畜</td>
                     <td width="30%">羊市場 S1</td>
                     <td width="30%">
-                        <button class="stock" id="sheepStock" onclick="resetStock(this.id);">0</button>
+                        <button class="stock" id="sheepStock" onclick="resetStock(this.id);">-</button>
                     </td>
                 </tr>
                 </tr>
                 <tr class="pet">
                     <td>猪市場 S3</td>
                     <td>
-                        <button class="stock" id="boarStock" onclick="resetStock(this.id);">0</button>
+                        <button class="stock" id="boarStock" onclick="resetStock(this.id);">-</button>
                     </td>
                 </tr>
                 </tr>
                 <tr class="pet">
                     <td>牛市場 S4</td>
                     <td>
-                        <button class="stock" id="cowStock" onclick="resetStock(this.id);">0</button>
+                        <button class="stock" id="cowStock" onclick="resetStock(this.id);">-</button>
                     </td>
                 </tr>
                 </tr>
@@ -258,14 +261,14 @@
                     <td class="foodBold" rowspan="2">飯</td>
                     <td>漁</td>
                     <td>
-                        <button class="stock" id="foodStock1" onclick="resetStock(this.id);">0</button>
+                        <button class="stock" id="foodStock1" onclick="resetStock(this.id);">1</button>
                     </td>
                 </tr>
                 </tr>
                 <tr class="food">
                     <td>小劇場</td>
                     <td>
-                        <button class="stock" id="foodStock2" onclick="resetStock(this.id);">0</button>
+                        <button class="stock" id="foodStock2" onclick="resetStock(this.id);">1</button>
                     </td>
                 </tr>
                 </tr>
@@ -276,6 +279,21 @@
     <script>
         const roundCount = document.getElementById("roundCount");
         const log = document.getElementById("log");
+        const wood3Stock = document.getElementById("wood3Stock");
+        let wood3Count = 0;
+        const wood2Stock = document.getElementById("wood2Stock");
+        const wood1Stock = document.getElementById("wood1Stock");
+        const clay2Stock = document.getElementById("clay2Stock");
+        const clay1Stock = document.getElementById("clay1Stock");
+        const westStoneStock = document.getElementById("westStoneStock");
+        const eastStoneStock = document.getElementById("eastStoneStock");
+        const reedStock = document.getElementById("reedStock");
+        const sheepStock = document.getElementById("sheepStock");
+        const boarStock = document.getElementById("boarStock");
+        const cowStock = document.getElementById("cowStock");
+        const foodStock1 = document.getElementById("foodStock1");
+        const foodStock2 = document.getElementById("foodStock2");
+
         function clicked() {
             const input = document.getElementById("input");
             const output = document.getElementById("output");
@@ -283,6 +301,7 @@
         }
         function nextRound() {
             roundCount.textContent = Number(roundCount.textContent) + 1;
+            wood3Stock.textContent = Number(wood3Stock.textContent) + 3;
         }
     </script>
 </body>
