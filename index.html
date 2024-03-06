@@ -301,9 +301,59 @@
             const output = document.getElementById("output");
             w3_stocks.innerHTML = `<b>${input.value}</b>`;
         }
+
         function nextRound() {
             roundCount.textContent = Number(roundCount.textContent) + 1;
-            wood3Stock.textContent = Number(wood3Stock.textContent) + 3;
+            if (!(isNaN(wood3Stock.textContent))) {
+                wood3Stock.textContent = Number(wood3Stock.textContent) + 3;
+            }
+            if (!(isNaN(wood2Stock.textContent))) {
+                wood2Stock.textContent = Number(wood2Stock.textContent) + 2;
+            }
+            if (!(isNaN(wood1Stock.textContent))) {
+                wood1Stock.textContent = Number(wood1Stock.textContent) + 1;
+            }
+            if (!(isNaN(clay2Stock.textContent))) {
+                clay2Stock.textContent = Number(clay2Stock.textContent) + 2;
+            }
+            if (!(isNaN(clay1Stock.textContent))) {
+                clay1Stock.textContent = Number(clay1Stock.textContent) + 1;
+            }
+            if (!(isNaN(westStoneStock.textContent))) {
+                westStoneStock.textContent = Number(westStoneStock.textContent) + 1;
+            }
+            if (!(isNaN(eastStoneStock.textContent))) {
+                eastStoneStock.textContent = Number(eastStoneStock.textContent) + 1;
+            }
+            if (!(isNaN(reedStock.textContent))) {
+                reedStock.textContent = Number(reedStock.textContent) + 1;
+            }
+            if (!(isNaN(sheepStock.textContent))) {
+                sheepStock.textContent = Number(sheepStock.textContent) + 1;
+            }
+            if (!(isNaN(boarStock.textContent))) {
+                boarStock.textContent = Number(boarStock.textContent) + 1;
+            }
+            if (!(isNaN(cowStock.textContent))) {
+                cowStock.textContent = Number(cowStock.textContent) + 1;
+            }
+            if (!(isNaN(foodStock1.textContent))) {
+                foodStock1.textContent = Number(foodStock1.textContent) + 1;
+            }
+            if (!(isNaN(foodStock2.textContent))) {
+                foodStock2.textContent = Number(foodStock2.textContent) + 1;
+            }
+        }
+
+        function resetStock(id) {
+            var thisElement = document.getElementById(id)
+
+            if (isNaN(thisElement.textContent)) {
+                thisElement.textContent = 1
+            }
+            else {
+                thisElement.textContent = 0
+            }
         }
     </script>
 </body>
