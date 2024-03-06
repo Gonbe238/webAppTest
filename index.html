@@ -26,37 +26,90 @@
             padding: 10px;
         }
 
-        /* ストックボタンの書式 */
-        button.stock {
-            /* background-color: forestgreen; */
-            /* 背景色 */
+        button.mini {
             color: white;
             /* 文字色 */
-            padding: 0px 40px;
+            padding: 0px 2px;
             /* パディング */
             text-align: center;
             /* 文字のアライメント */
             text-decoration: none;
             /* 文字装飾 */
-            display: block;
+            display: inline-block;
             /* ボタンの表示方法 */
-            font-size: 1.5em;
+            font-size: 0.8em;
             /* フォントサイズ */
-            font-family: Arial, sans-serif;
-            /* フォント */
-            margin: auto;
+            margin: 0px 0px;
             /* 外側の余白 */
             cursor: pointer;
             /* カーソル */
             border: none;
             /* ボーダーなし */
-            border-radius: 20px;
+            border-radius: 5px;
             /* 20pxの角丸 */
+            min-width: 1em;
         }
 
         table.setWidth {
             margin: auto;
             width: 95%;
+        }
+
+        td.buttonArea {
+            align-content: center;
+        }
+
+        td.buttonArea div {
+            display: flex;
+            justify-content: center;
+        }
+
+        td.buttonArea button {
+            color: white;
+            /* 文字色 */
+            padding: 0px 2px;
+            /* パディング */
+            text-align: center;
+            /* 文字のアライメント */
+            text-decoration: none;
+            /* 文字装飾 */
+            display: inline-block;
+            /* ボタンの表示方法 */
+            font-size: 0.8em;
+            /* フォントサイズ */
+            margin: 0px 0px;
+            /* 外側の余白 */
+            cursor: pointer;
+            /* カーソル */
+            border: none;
+            /* ボーダーなし */
+            border-radius: 5px;
+            /* 20pxの角丸 */
+            min-width: 1em;
+        }
+
+        /* ストックボタンの書式 */
+        button.stock {
+            color: white;
+            /* 文字色 */
+            padding: 0px 40px !important;
+            /* パディング */
+            text-align: center;
+            /* 文字のアライメント */
+            text-decoration: none;
+            /* 文字装飾 */
+            display: inline-block;
+            /* ボタンの表示方法 */
+            font-size: 1.8em !important;
+            /* フォントサイズ */
+            margin: 0px 10px !important;
+            /* 外側の余白 */
+            cursor: pointer;
+            /* カーソル */
+            border: none;
+            /* ボーダーなし */
+            border-radius: 5px;
+            /* 5pxの角丸 */
         }
 
         /* 木エリア用書式 */
@@ -175,14 +228,22 @@
                 <tr class="wood">
                     <td class="woodBold" rowspan="3" width="30%">木材</td>
                     <td width="30%">森林</td>
-                    <td width="30%">
-                        <button class="stock" id="wood3Stock" onclick="resetStock(this.id);">3</button>
+                    <td width="30%" align="center">
+                        <div class="buttonArea">
+                            <button class="mini">-</button>
+                            <button class="stock" id="wood3Stock" onclick="resetStock(this.id);">3</button>
+                            <button class="mini">+</button>
+                        </div>
                     </td>
                 </tr>
                 <tr class="wood">
                     <td>小さな森</td>
-                    <td>
-                        <button class="stock" id="wood2Stock" onclick="resetStock(this.id);">2</button>
+                    <td class="buttonArea">
+                        <div>
+                            <button>-</button>
+                            <button class="stock" id="wood2Stock" onclick="resetStock(this.id);">2</button>
+                            <button>+</button>
+                        </div>
                     </td>
                 </tr>
                 <tr class="wood">
@@ -282,7 +343,6 @@
         const roundCount = document.getElementById("roundCount");
         const log = document.getElementById("log");
         const wood3Stock = document.getElementById("wood3Stock");
-        let wood3Count = 0;
         const wood2Stock = document.getElementById("wood2Stock");
         const wood1Stock = document.getElementById("wood1Stock");
         const clay2Stock = document.getElementById("clay2Stock");
@@ -295,12 +355,6 @@
         const cowStock = document.getElementById("cowStock");
         const foodStock1 = document.getElementById("foodStock1");
         const foodStock2 = document.getElementById("foodStock2");
-
-        function clicked() {
-            const input = document.getElementById("input");
-            const output = document.getElementById("output");
-            w3_stocks.innerHTML = `<b>${input.value}</b>`;
-        }
 
         function nextRound() {
             roundCount.textContent = Number(roundCount.textContent) + 1;
