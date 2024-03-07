@@ -24,28 +24,43 @@
             padding: 10px;
         }
 
-        button.mini {
-            color: white;
+        .glow {
+            flex-grow: 1;
+        }
+
+        p.heading1 {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        div.autoTopBottom {
+            margin-top: auto !important;
+            margin-bottom: auto !important;
+        }
+
+        button.round {
+            color: black;
             /* 文字色 */
-            padding: 0px 2px;
+            background-color: whitesmoke;
+            /* 背景色 */
+            padding: 2px 4px;
             /* パディング */
             text-align: center;
             /* 文字のアライメント */
             text-decoration: none;
             /* 文字装飾 */
-            display: block;
+            display: inline-block;
             /* ボタンの表示方法 */
             font-size: 0.8em;
             /* フォントサイズ */
-            margin: 0px 0px;
+            margin: 0px 4px;
             /* 外側の余白 */
             cursor: pointer;
             /* カーソル */
-            border: none;
-            /* ボーダーなし */
+            border: 1px outset black;
+            /* ボーダー */
             border-radius: 5px;
             /* 20pxの角丸 */
-            min-width: 1em;
         }
 
         table.setWidth {
@@ -221,14 +236,24 @@
 
 <body>
     <div class="flex">
-        <div id="Round">
-            <h1>
+        <div id="Round" class="glow">
+            <p class="heading1">
+                <button class="round" onclick="preRound();"><</button>
                 Round
                 <span id="roundCount">1</span>
-                <button onclick="nextRound();">Next Round</button>
-            </h1>
+                <button class="round" onclick="nextRound();">Next ></button>
+            </p>
         </div>
-
+        <div>
+            <p class="heading1">
+                Player
+                <select id="playerCount">
+                    <option>2 Player</option>
+                    <option>3 Player</option>
+                    <option selected>4 Player</option>
+                </select>
+            </p>
+        </div>
     </div>
     <div id="log"></div>
 
@@ -396,6 +421,7 @@
 
     <script>
         const roundCount = document.getElementById("roundCount");
+        const playerCount = document.getElementById("playerCount");
         const log = document.getElementById("log");
         const wood3Stock = document.getElementById("wood3Stock");
         const wood2Stock = document.getElementById("wood2Stock");
@@ -455,28 +481,28 @@
         }
 
         function resetStock(id) {
-            var thisElement = document.getElementById(id)
+            var thisElement = document.getElementById(id);
 
             if (isNaN(thisElement.textContent)) {
-                thisElement.textContent = 1
+                thisElement.textContent = 1;
             }
             else {
-                thisElement.textContent = 0
+                thisElement.textContent = 0;
             }
         }
 
         function changeStock(id) {
-            var targetId = id.slice(0, id.length - 1)
-            var targetElement = document.getElementById(targetId)
-            var plusOrMinus = 0
+            var targetId = id.slice(0, id.length - 1);
+            var targetElement = document.getElementById(targetId);
+            var plusOrMinus = 0;
 
             switch (id.slice(-1)) {
                 case '+':
-                    plusOrMinus = 1
+                    plusOrMinus = 1;
                     break;
 
                 case '-':
-                    plusOrMinus = -1
+                    plusOrMinus = -1;
                     break;
 
                 default:
@@ -484,8 +510,12 @@
             }
 
             if (!(isNaN(targetElement.textContent))) {
-                targetElement.textContent = Number(targetElement.textContent) + plusOrMinus
+                targetElement.textContent = Number(targetElement.textContent) + plusOrMinus;
             }
+        }
+
+        playerCount.onchange = event => {
+            log.textContent = playerCount.value;
         }
     </script>
 </body>
