@@ -35,7 +35,7 @@
             /* 文字のアライメント */
             text-decoration: none;
             /* 文字装飾 */
-            display: inline-block;
+            display: block;
             /* ボタンの表示方法 */
             font-size: 0.8em;
             /* フォントサイズ */
@@ -51,15 +51,18 @@
         }
 
         table.setWidth {
-            margin: auto;
+            margin-left: auto;
+            margin-right: auto;
             width: 95%;
         }
 
         td.buttonArea {
-            align-content: center;
+            text-align: center;
         }
 
         td.buttonArea div {
+            width: 100% !important;
+            padding: 2px !important;
             display: flex;
             justify-content: center;
         }
@@ -90,6 +93,8 @@
 
         /* ストックボタンの書式 */
         button.stock {
+            font-weight: bold;
+            /* 文字ボールド */
             color: white;
             /* 文字色 */
             padding: 0px 40px !important;
@@ -102,7 +107,7 @@
             /* ボタンの表示方法 */
             font-size: 1.8em !important;
             /* フォントサイズ */
-            margin: 0px 10px !important;
+            margin: 0px 20px !important;
             /* 外側の余白 */
             cursor: pointer;
             /* カーソル */
@@ -110,6 +115,7 @@
             /* ボーダーなし */
             border-radius: 5px;
             /* 5pxの角丸 */
+            min-width: auto !important;
         }
 
         /* 木エリア用書式 */
@@ -228,11 +234,11 @@
                 <tr class="wood">
                     <td class="woodBold" rowspan="3" width="30%">木材</td>
                     <td width="30%">森林</td>
-                    <td width="30%" align="center">
-                        <div class="buttonArea">
-                            <button class="mini">-</button>
+                    <td width="30%" class="buttonArea">
+                        <div>
+                            <button id="wood3Stock-" onclick="changeStock(this.id)">-</button>
                             <button class="stock" id="wood3Stock" onclick="resetStock(this.id);">3</button>
-                            <button class="mini">+</button>
+                            <button id="wood3Stock+" onclick="changeStock(this.id)">+</button>
                         </div>
                     </td>
                 </tr>
@@ -240,31 +246,43 @@
                     <td>小さな森</td>
                     <td class="buttonArea">
                         <div>
-                            <button>-</button>
+                            <button id="wood2Stock-" onclick="changeStock(this.id)">-</button>
                             <button class="stock" id="wood2Stock" onclick="resetStock(this.id);">2</button>
-                            <button>+</button>
+                            <button id="wood2Stock+" onclick="changeStock(this.id)">+</button>
                         </div>
                     </td>
                 </tr>
                 <tr class="wood">
                     <td>雑木林</td>
-                    <td>
-                        <button class="stock" id="wood1Stock" onclick="resetStock(this.id);">1</button>
+                    <td class="buttonArea">
+                        <div>
+                            <button id="wood1Stock-" onclick="changeStock(this.id)">-</button>
+                            <button class="stock" id="wood1Stock" onclick="resetStock(this.id);">1</button>
+                            <button id="wood1Stock+" onclick="changeStock(this.id)">+</button>
+                        </div>
                     </td>
                 </tr>
                 <!--レンガエリア-->
                 <tr class="clay">
                     <td class="clayBold" rowspan="2">レンガ</td>
                     <td>窪地</td>
-                    <td>
-                        <button class="stock" id="clay2Stock" onclick="resetStock(this.id);">2</button>
+                    <td class="buttonArea">
+                        <div>
+                            <button id="clay2Stock-" onclick="changeStock(this.id)">-</button>
+                            <button class="stock" id="clay2Stock" onclick="resetStock(this.id);">2</button>
+                            <button id="clay2Stock+" onclick="changeStock(this.id)">+</button>
+                        </div>
                     </td>
                 </tr>
                 </tr>
                 <tr class="clay">
                     <td>粘土抗</td>
-                    <td>
-                        <button class="stock" id="clay1Stock" onclick="resetStock(this.id);">1</button>
+                    <td class="buttonArea">
+                        <div>
+                            <button id="clay1Stock-" onclick="changeStock(this.id)">-</button>
+                            <button class="stock" id="clay1Stock" onclick="resetStock(this.id);">1</button>
+                            <button id="clay1Stock+" onclick="changeStock(this.id)">+</button>
+                        </div>
                     </td>
                 </tr>
                 </tr>
@@ -272,15 +290,23 @@
                 <tr class="stone">
                     <td class="stoneBold" rowspan="2">石材</td>
                     <td>西石 S2</tjd>
-                    <td>
-                        <button class="stock" id="westStoneStock" onclick="resetStock(this.id);">-</button>
+                    <td class="buttonArea">
+                        <div>
+                            <button id="westStoneStock-" onclick="changeStock(this.id)">-</button>
+                            <button class="stock" id="westStoneStock" onclick="resetStock(this.id);">-</button>
+                            <button id="westStoneStock+" onclick="changeStock(this.id)">+</button>
+                        </div>
                     </td>
                 </tr>
                 </tr>
                 <tr class="stone">
                     <td>東石 S4</td>
-                    <td>
-                        <button class="stock" id="eastStoneStock" onclick="resetStock(this.id);">-</button>
+                    <td class="buttonArea">
+                        <div>
+                            <button id="eastStoneStock-" onclick="changeStock(this.id)">-</button>
+                            <button class="stock" id="eastStoneStock" onclick="resetStock(this.id);">-</button>
+                            <button id="eastStoneStock+" onclick="changeStock(this.id)">+</button>
+                        </div>
                     </td>
                 </tr>
                 </tr>
@@ -291,8 +317,12 @@
                 <!--葦エリア-->
                 <tr class="reed">
                     <td class="reedBold" width="30%" colspan="2">葦原</td>
-                    <td width="30%">
-                        <button class="stock" id="reedStock" onclick="resetStock(this.id);">1</button>
+                    <td class="buttonArea" width="30%">
+                        <div>
+                            <button id="reedStock-" onclick="changeStock(this.id)">-</button>
+                            <button class="stock" id="reedStock" onclick="resetStock(this.id);">1</button>
+                            <button id="reedStock+" onclick="changeStock(this.id)">+</button>
+                        </div>
                     </td>
                 </tr>
                 </tr>
@@ -300,22 +330,34 @@
                 <tr class="pet">
                     <td class="petBold" width="30%" rowspan="3">家畜</td>
                     <td width="30%">羊 S1</td>
-                    <td width="30%">
-                        <button class="stock" id="sheepStock" onclick="resetStock(this.id);">-</button>
+                    <td class="buttonArea" width="30%">
+                        <div>
+                            <button id="sheepStock-" onclick="changeStock(this.id)">-</button>
+                            <button class="stock" id="sheepStock" onclick="resetStock(this.id);">-</button>
+                            <button id="sheepStock+" onclick="changeStock(this.id)">+</button>
+                        </div>
                     </td>
                 </tr>
                 </tr>
                 <tr class="pet">
                     <td>猪 S3</td>
-                    <td>
-                        <button class="stock" id="boarStock" onclick="resetStock(this.id);">-</button>
+                    <td class="buttonArea">
+                        <div>
+                            <button id="boarStock-" onclick="changeStock(this.id)">-</button>
+                            <button class="stock" id="boarStock" onclick="resetStock(this.id);">-</button>
+                            <button id="boarStock+" onclick="changeStock(this.id)">+</button>
+                        </div>
                     </td>
                 </tr>
                 </tr>
                 <tr class="pet">
                     <td>牛 S4</td>
-                    <td>
-                        <button class="stock" id="cowStock" onclick="resetStock(this.id);">-</button>
+                    <td class="buttonArea">
+                        <div>
+                            <button id="cowStock-" onclick="changeStock(this.id)">-</button>
+                            <button class="stock" id="cowStock" onclick="resetStock(this.id);">-</button>
+                            <button id="cowStock+" onclick="changeStock(this.id)">+</button>
+                        </div>
                     </td>
                 </tr>
                 </tr>
@@ -323,15 +365,23 @@
                 <tr class="food">
                     <td class="foodBold" rowspan="2">飯</td>
                     <td>漁</td>
-                    <td>
-                        <button class="stock" id="foodStock1" onclick="resetStock(this.id);">1</button>
+                    <td class="buttonArea">
+                        <div>
+                            <button id="foodStock1-" onclick="changeStock(this.id)">-</button>
+                            <button class="stock" id="foodStock1" onclick="resetStock(this.id);">1</button>
+                            <button id="foodStock1+" onclick="changeStock(this.id)">+</button>
+                        </div>
                     </td>
                 </tr>
                 </tr>
                 <tr class="food">
                     <td>小劇場</td>
-                    <td>
-                        <button class="stock" id="foodStock2" onclick="resetStock(this.id);">1</button>
+                    <td class="buttonArea">
+                        <div>
+                            <button id="foodStock2-" onclick="changeStock(this.id)">-</button>
+                            <button class="stock" id="foodStock2" onclick="resetStock(this.id);">1</button>
+                            <button id="foodStock2+" onclick="changeStock(this.id)">+</button>
+                        </div>
                     </td>
                 </tr>
                 </tr>
@@ -407,6 +457,29 @@
             }
             else {
                 thisElement.textContent = 0
+            }
+        }
+
+        function changeStock(id) {
+            var targetId = id.slice(0, id.length - 1)
+            var targetElement = document.getElementById(targetId)
+            var plusOrMinus = 0
+
+            switch (id.slice(-1)) {
+                case '+':
+                    plusOrMinus = 1
+                    break;
+
+                case '-':
+                    plusOrMinus = -1
+                    break;
+
+                default:
+                    break;
+            }
+
+            if (!(isNaN(targetElement.textContent))) {
+                targetElement.textContent = Number(targetElement.textContent) + plusOrMinus
             }
         }
     </script>
