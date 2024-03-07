@@ -17,11 +17,9 @@
             display: flex;
             padding: 10px;
             align-items: flex-start;
-            font-size: 1.8em
         }
 
         .flex div {
-            width: 50%;
             margin: 0px;
             padding: 10px;
         }
@@ -51,11 +49,15 @@
         }
 
         table.setWidth {
-            margin-left: auto;
-            margin-right: auto;
-            width: 95%;
+            white-space: nowrap;
+            font-size: 1.8em;
         }
 
+        table.setWidth td:nth-of-type(-n+2) {
+            width: 4.5em;
+        }
+
+        /* ボタンエリアの書式 */
         td.buttonArea {
             text-align: center;
         }
@@ -218,12 +220,15 @@
 </head>
 
 <body>
-    <div id="Round">
-        <h1>
-            Round
-            <span id="roundCount">1</span>
-            <button onclick="nextRound();">Next Round</button>
-        </h1>
+    <div class="flex">
+        <div id="Round">
+            <h1>
+                Round
+                <span id="roundCount">1</span>
+                <button onclick="nextRound();">Next Round</button>
+            </h1>
+        </div>
+
     </div>
     <div id="log"></div>
 
