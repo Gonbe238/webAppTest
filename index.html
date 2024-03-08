@@ -13,19 +13,37 @@
             font-family: "Noto Sans JP"
         }
 
+        footer {
+            text-align: right;
+        }
+
         .flex {
             display: flex;
             padding: 10px;
             align-items: flex-start;
         }
 
-        .flex div {
+        .flex>div {
             margin: 0px;
             padding: 10px;
         }
 
         .glow {
             flex-grow: 1;
+        }
+
+        .rotate90 {
+            transform: rotate(90deg);
+        }
+
+        .rotate270 {
+            transform: rotate(270deg);
+        }
+
+        .triming {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
         }
 
         p.heading1 {
@@ -36,6 +54,17 @@
         div.autoTopBottom {
             margin-top: auto !important;
             margin-bottom: auto !important;
+        }
+
+        div.radioVertical>label {
+            display: block;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        div.radioVertical>label>input {
+            margin-right: 5px;
+            cursor: pointer;
         }
 
         button.round {
@@ -70,6 +99,10 @@
 
         table.setWidth td:nth-of-type(-n+2) {
             width: 4.5em;
+        }
+
+        table.setWidth * {
+            vertical-align: middle;
         }
 
         /* ボタンエリアの書式 */
@@ -235,24 +268,21 @@
 </head>
 
 <body>
+
+    <!--メインページ-->
     <div class="flex">
         <div id="Round" class="glow">
             <p class="heading1">
-                <button class="round" onclick="preRound();"><</button>
+                <button class="round" onclick="previousRound();"><</button>
                 Round
                 <span id="roundCount">1</span>
                 <button class="round" onclick="nextRound();">Next ></button>
             </p>
         </div>
-        <div>
-            <p class="heading1">
-                Player
-                <select id="playerCount">
-                    <option>2 Player</option>
-                    <option>3 Player</option>
-                    <option selected>4 Player</option>
-                </select>
-            </p>
+        <div class="radioVertical">
+            <label><input type="radio" name="players" id="2Players" onchange="changePlayerCount(this.id)">2 Players</label>
+            <label><input type="radio" name="players" id="3Players" onchange="changePlayerCount(this.id)">3 Players</label>
+            <label><input type="radio" name="players" id="4Players" onchange="changePlayerCount(this.id)" checked="checked">4 Players</label>
         </div>
     </div>
     <div id="log"></div>
@@ -262,7 +292,10 @@
             <table class="setWidth" border>
                 <!--木エリア-->
                 <tr class="wood">
-                    <td class="woodBold" rowspan="3" width="30%">木材</td>
+                    <td class="woodBold" rowspan="3" width="30%">
+                        <img class="rotate270" width="50" height="50" src="https://img.icons8.com/ios-filled/50/FFFFFF/wood.png" alt="wood" /><br>
+                        木材
+                    </td>
                     <td width="30%">森林</td>
                     <td width="30%" class="buttonArea">
                         <div>
@@ -294,7 +327,10 @@
                 </tr>
                 <!--レンガエリア-->
                 <tr class="clay">
-                    <td class="clayBold" rowspan="2">レンガ</td>
+                    <td class="clayBold" rowspan="2">
+                        <img width="50" height="50" src="https://img.icons8.com/ios-filled/50/FFFFFF/block.png" alt="block" /><br>
+                        レンガ
+                    </td>
                     <td>窪地</td>
                     <td class="buttonArea">
                         <div>
@@ -318,7 +354,10 @@
                 </tr>
                 <!--石エリア-->
                 <tr class="stone">
-                    <td class="stoneBold" rowspan="2">石材</td>
+                    <td class="stoneBold" rowspan="2">
+                        <img class="rotate90" width="50" height="50" src="https://img.icons8.com/ios-filled/50/FFFFFF/coal.png" alt="coal" /><br>
+                        石材
+                    </td>
                     <td>西石 S2</tjd>
                     <td class="buttonArea">
                         <div>
@@ -346,7 +385,10 @@
             <table border class="setWidth">
                 <!--葦エリア-->
                 <tr class="reed">
-                    <td class="reedBold" width="30%" colspan="2">葦原</td>
+                    <td class="reedBold" width="30%">
+                        <img width="48" height="48" src="https://img.icons8.com/ios-filled/50/000000/hay.png" alt="hay" />
+                    </td>
+                    <td width="30%">葦原</td>
                     <td class="buttonArea" width="30%">
                         <div>
                             <button id="reedStock-" onclick="changeStock(this.id)">-</button>
@@ -358,9 +400,15 @@
                 </tr>
                 <!--家畜エリア-->
                 <tr class="pet">
-                    <td class="petBold" width="30%" rowspan="3">家畜</td>
-                    <td width="30%">羊 S1</td>
-                    <td class="buttonArea" width="30%">
+                    <td class="petBold" rowspan="3">
+                        <img width="50" height="50" src="https://img.icons8.com/ios-filled/50/FFFFFF/farm-2.png" alt="farm-2" /><br>
+                        家畜
+                    </td>
+                    <td>
+                        <img width="40" height="40" src="https://img.icons8.com/glyph-neue/64/808080/sheep2.png" alt="sheep2" />
+                        羊 S1
+                    </td>
+                    <td class="buttonArea">
                         <div>
                             <button id="sheepStock-" onclick="changeStock(this.id)">-</button>
                             <button class="stock" id="sheepStock" onclick="resetStock(this.id);">-</button>
@@ -370,7 +418,10 @@
                 </tr>
                 </tr>
                 <tr class="pet">
-                    <td>猪 S3</td>
+                    <td>
+                        <img width="42" height="42" src="https://img.icons8.com/sf-black-filled/64/000000/year-of-pig.png" alt="year-of-pig" />
+                        猪 S3
+                    </td>
                     <td class="buttonArea">
                         <div>
                             <button id="boarStock-" onclick="changeStock(this.id)">-</button>
@@ -381,19 +432,25 @@
                 </tr>
                 </tr>
                 <tr class="pet">
-                    <td>牛 S4</td>
+                    <td>
+                        <img width="42" height="42" src="https://img.icons8.com/sf-regular-filled/48/402010/cow.png" alt="cow" />
+                        牛 S4
+                    </td>
                     <td class="buttonArea">
                         <div>
-                            <button id="cowStock-" onclick="changeStock(this.id)">-</button>
-                            <button class="stock" id="cowStock" onclick="resetStock(this.id);">-</button>
-                            <button id="cowStock+" onclick="changeStock(this.id)">+</button>
+                            <button id="cattleStock-" onclick="changeStock(this.id)">-</button>
+                            <button class="stock" id="cattleStock" onclick="resetStock(this.id);">-</button>
+                            <button id="cattleStock+" onclick="changeStock(this.id)">+</button>
                         </div>
                     </td>
                 </tr>
                 </tr>
                 <!--飯エリア-->
                 <tr class="food">
-                    <td class="foodBold" rowspan="2">飯</td>
+                    <td class="foodBold" rowspan="2">
+                        <img width="55" height="55" src="https://img.icons8.com/glyph-neue/64/FFFFFF/meal.png" alt="meal" /><br>
+                        食料
+                    </td>
                     <td>漁</td>
                     <td class="buttonArea">
                         <div>
@@ -419,6 +476,15 @@
         </div>
     </div>
 
+    <!--フッター-->
+    <footer>
+        <p>
+            Designed by Gonbe238.
+            icons by <a href="https://icons8.com">Icons8</a>.
+        </p>
+    </footer>
+
+    <!--スクリプト-->
     <script>
         const roundCount = document.getElementById("roundCount");
         const playerCount = document.getElementById("playerCount");
@@ -433,9 +499,10 @@
         const reedStock = document.getElementById("reedStock");
         const sheepStock = document.getElementById("sheepStock");
         const boarStock = document.getElementById("boarStock");
-        const cowStock = document.getElementById("cowStock");
+        const cattleStock = document.getElementById("cattleStock");
         const foodStock1 = document.getElementById("foodStock1");
         const foodStock2 = document.getElementById("foodStock2");
+        let playersCheck = document.getElementById("3Players").value;
 
         function nextRound() {
             roundCount.textContent = Number(roundCount.textContent) + 1;
@@ -449,7 +516,12 @@
                 wood1Stock.textContent = Number(wood1Stock.textContent) + 1;
             }
             if (!(isNaN(clay2Stock.textContent))) {
-                clay2Stock.textContent = Number(clay2Stock.textContent) + 2;
+                if (playersCheck == 'on') {
+                    clay2Stock.textContent = Number(clay2Stock.textContent) + 1;
+                }
+                else {
+                    clay2Stock.textContent = Number(clay2Stock.textContent) + 2;
+                }
             }
             if (!(isNaN(clay1Stock.textContent))) {
                 clay1Stock.textContent = Number(clay1Stock.textContent) + 1;
@@ -469,14 +541,62 @@
             if (!(isNaN(boarStock.textContent))) {
                 boarStock.textContent = Number(boarStock.textContent) + 1;
             }
-            if (!(isNaN(cowStock.textContent))) {
-                cowStock.textContent = Number(cowStock.textContent) + 1;
+            if (!(isNaN(cattleStock.textContent))) {
+                cattleStock.textContent = Number(cattleStock.textContent) + 1;
             }
             if (!(isNaN(foodStock1.textContent))) {
                 foodStock1.textContent = Number(foodStock1.textContent) + 1;
             }
             if (!(isNaN(foodStock2.textContent))) {
                 foodStock2.textContent = Number(foodStock2.textContent) + 1;
+            }
+        }
+
+        function previousRound() {
+            roundCount.textContent = Number(roundCount.textContent) - 1;
+            if (!(isNaN(wood3Stock.textContent))) {
+                wood3Stock.textContent = Number(wood3Stock.textContent) - 3;
+            }
+            if (!(isNaN(wood2Stock.textContent))) {
+                wood2Stock.textContent = Number(wood2Stock.textContent) - 2;
+            }
+            if (!(isNaN(wood1Stock.textContent))) {
+                wood1Stock.textContent = Number(wood1Stock.textContent) - 1;
+            }
+            if (!(isNaN(clay2Stock.textContent))) {
+                if (playerCount.value == '3 Player') {
+                    clay2Stock.textContent = Number(clay2Stock.textContent) - 1;
+                }
+                else {
+                    clay2Stock.textContent = Number(clay2Stock.textContent) - 2;
+                }
+            }
+            if (!(isNaN(clay1Stock.textContent))) {
+                clay1Stock.textContent = Number(clay1Stock.textContent) - 1;
+            }
+            if (!(isNaN(westStoneStock.textContent))) {
+                westStoneStock.textContent = Number(westStoneStock.textContent) - 1;
+            }
+            if (!(isNaN(eastStoneStock.textContent))) {
+                eastStoneStock.textContent = Number(eastStoneStock.textContent) - 1;
+            }
+            if (!(isNaN(reedStock.textContent))) {
+                reedStock.textContent = Number(reedStock.textContent) - 1;
+            }
+            if (!(isNaN(sheepStock.textContent))) {
+                sheepStock.textContent = Number(sheepStock.textContent) - 1;
+            }
+            if (!(isNaN(boarStock.textContent))) {
+                boarStock.textContent = Number(boarStock.textContent) - 1;
+            }
+            if (!(isNaN(cattleStock.textContent))) {
+                cattleStock.textContent = Number(cattleStock.textContent) - 1;
+            }
+            if (!(isNaN(foodStock1.textContent))) {
+                foodStock1.textContent = Number(foodStock1.textContent) - 1;
+            }
+            if (!(isNaN(foodStock2.textContent))) {
+                foodStock2.textContent = Number(foodStock2.textContent) - 1;
             }
         }
 
@@ -514,9 +634,65 @@
             }
         }
 
-        playerCount.onchange = event => {
-            log.textContent = playerCount.value;
+        function changePlayerCount(selectedPlayerCount) {
+            switch (selectedPlayerCount) {
+                case '2Players':
+                    roundCount.textContent = 1
+                    wood3Stock.textContent = 3
+                    wood2Stock.textContent = '-'
+                    wood1Stock.textContent = '-'
+                    clay2Stock.textContent = '-'
+                    clay1Stock.textContent = 1
+                    westStoneStock.textContent = '-'
+                    eastStoneStock.textContent = '-'
+                    reedStock.textContent = 1
+                    sheepStock.textContent = '-'
+                    boarStock.textContent = '-'
+                    cattleStock.textContent = '-'
+                    foodStock1.textContent = 1
+                    foodStock2.textContent = '-'
+                    break;
+
+                case '3Players':
+                    roundCount.textContent = 1
+                    wood3Stock.textContent = 3
+                    wood2Stock.textContent = 2
+                    wood1Stock.textContent = '-'
+                    clay2Stock.textContent = 1
+                    clay1Stock.textContent = 1
+                    westStoneStock.textContent = '-'
+                    eastStoneStock.textContent = '-'
+                    reedStock.textContent = 1
+                    sheepStock.textContent = '-'
+                    boarStock.textContent = '-'
+                    cattleStock.textContent = '-'
+                    foodStock1.textContent = 1
+                    foodStock2.textContent = '-'
+                    break;
+
+                case '4Players':
+                    roundCount.textContent = 1
+                    wood3Stock.textContent = 3
+                    wood2Stock.textContent = 2
+                    wood1Stock.textContent = 1
+                    clay2Stock.textContent = 2
+                    clay1Stock.textContent = 1
+                    westStoneStock.textContent = '-'
+                    eastStoneStock.textContent = '-'
+                    reedStock.textContent = 1
+                    sheepStock.textContent = '-'
+                    boarStock.textContent = '-'
+                    cattleStock.textContent = '-'
+                    foodStock1.textContent = 1
+                    foodStock2.textContent = 1
+                    break;
+
+                default:
+                    log.textContent = 'error';
+                    break;
+            }
         }
+
     </script>
 </body>
 
