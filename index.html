@@ -292,12 +292,12 @@
             <table class="setWidth" border>
                 <!--木エリア-->
                 <tr class="wood">
-                    <td class="woodBold" rowspan="3" width="30%">
+                    <td class="woodBold" rowspan="3">
                         <img class="rotate270" width="50" height="50" src="https://img.icons8.com/ios-filled/50/FFFFFF/wood.png" alt="wood" /><br>
                         木材
                     </td>
-                    <td width="30%">森林</td>
-                    <td width="30%" class="buttonArea">
+                    <td>森林</td>
+                    <td class="buttonArea">
                         <div>
                             <button id="wood3Stock-" onclick="changeStock(this.id)">-</button>
                             <button class="stock" id="wood3Stock" onclick="resetStock(this.id);">3</button>
@@ -325,6 +325,21 @@
                         </div>
                     </td>
                 </tr>
+                <!--葦エリア-->
+                <tr class="reed">
+                    <td class="reedBold">
+                        <img width="48" height="48" src="https://img.icons8.com/ios-filled/50/000000/hay.png" alt="hay" /><br>
+                        葦
+                    </td>
+                    <td>葦原</td>
+                    <td class="buttonArea">
+                        <div>
+                            <button id="reedStock-" onclick="changeStock(this.id)">-</button>
+                            <button class="stock" id="reedStock" onclick="resetStock(this.id);">1</button>
+                            <button id="reedStock+" onclick="changeStock(this.id)">+</button>
+                        </div>
+                    </td>
+                </tr>
                 <!--レンガエリア-->
                 <tr class="clay">
                     <td class="clayBold" rowspan="2">
@@ -340,7 +355,6 @@
                         </div>
                     </td>
                 </tr>
-                </tr>
                 <tr class="clay">
                     <td>粘土抗</td>
                     <td class="buttonArea">
@@ -351,7 +365,10 @@
                         </div>
                     </td>
                 </tr>
-                </tr>
+            </table>
+        </div>
+        <div>
+            <table border class="setWidth">
                 <!--石エリア-->
                 <tr class="stone">
                     <td class="stoneBold" rowspan="2">
@@ -367,7 +384,6 @@
                         </div>
                     </td>
                 </tr>
-                </tr>
                 <tr class="stone">
                     <td>東石 S4</td>
                     <td class="buttonArea">
@@ -378,26 +394,6 @@
                         </div>
                     </td>
                 </tr>
-                </tr>
-            </table>
-        </div>
-        <div>
-            <table border class="setWidth">
-                <!--葦エリア-->
-                <tr class="reed">
-                    <td class="reedBold" width="30%">
-                        <img width="48" height="48" src="https://img.icons8.com/ios-filled/50/000000/hay.png" alt="hay" />
-                    </td>
-                    <td width="30%">葦原</td>
-                    <td class="buttonArea" width="30%">
-                        <div>
-                            <button id="reedStock-" onclick="changeStock(this.id)">-</button>
-                            <button class="stock" id="reedStock" onclick="resetStock(this.id);">1</button>
-                            <button id="reedStock+" onclick="changeStock(this.id)">+</button>
-                        </div>
-                    </td>
-                </tr>
-                </tr>
                 <!--家畜エリア-->
                 <tr class="pet">
                     <td class="petBold" rowspan="3">
@@ -405,7 +401,7 @@
                         家畜
                     </td>
                     <td>
-                        <img width="40" height="40" src="https://img.icons8.com/glyph-neue/64/808080/sheep2.png" alt="sheep2" />
+                        <img width="40" height="40" src="https://img.icons8.com/glyph-neue/64/707070/sheep2.png" alt="sheep2" />
                         羊 S1
                     </td>
                     <td class="buttonArea">
@@ -415,7 +411,6 @@
                             <button id="sheepStock+" onclick="changeStock(this.id)">+</button>
                         </div>
                     </td>
-                </tr>
                 </tr>
                 <tr class="pet">
                     <td>
@@ -430,7 +425,6 @@
                         </div>
                     </td>
                 </tr>
-                </tr>
                 <tr class="pet">
                     <td>
                         <img width="42" height="42" src="https://img.icons8.com/sf-regular-filled/48/402010/cow.png" alt="cow" />
@@ -443,7 +437,6 @@
                             <button id="cattleStock+" onclick="changeStock(this.id)">+</button>
                         </div>
                     </td>
-                </tr>
                 </tr>
                 <!--飯エリア-->
                 <tr class="food">
@@ -460,7 +453,6 @@
                         </div>
                     </td>
                 </tr>
-                </tr>
                 <tr class="food">
                     <td>小劇場</td>
                     <td class="buttonArea">
@@ -470,7 +462,6 @@
                             <button id="foodStock2+" onclick="changeStock(this.id)">+</button>
                         </div>
                     </td>
-                </tr>
                 </tr>
             </table>
         </div>
@@ -502,7 +493,7 @@
         const cattleStock = document.getElementById("cattleStock");
         const foodStock1 = document.getElementById("foodStock1");
         const foodStock2 = document.getElementById("foodStock2");
-        let playersCheck = document.getElementById("3Players").value;
+        const player3Element = document.getElementById("3Players");
 
         function nextRound() {
             roundCount.textContent = Number(roundCount.textContent) + 1;
@@ -516,7 +507,7 @@
                 wood1Stock.textContent = Number(wood1Stock.textContent) + 1;
             }
             if (!(isNaN(clay2Stock.textContent))) {
-                if (playersCheck == 'on') {
+                if (player3Element.checked) {
                     clay2Stock.textContent = Number(clay2Stock.textContent) + 1;
                 }
                 else {
@@ -564,7 +555,7 @@
                 wood1Stock.textContent = Number(wood1Stock.textContent) - 1;
             }
             if (!(isNaN(clay2Stock.textContent))) {
-                if (playerCount.value == '3 Player') {
+                if (player3Element.checked) {
                     clay2Stock.textContent = Number(clay2Stock.textContent) - 1;
                 }
                 else {
@@ -640,7 +631,7 @@
                     roundCount.textContent = 1
                     wood3Stock.textContent = 3
                     wood2Stock.textContent = '-'
-                    wood1Stock.textContent = '-'
+                    wood1Stock.textContent = 1
                     clay2Stock.textContent = '-'
                     clay1Stock.textContent = 1
                     westStoneStock.textContent = '-'
